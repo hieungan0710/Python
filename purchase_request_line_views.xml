@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+        <record id="view_purchase_request_line_form" model="ir.ui.view">
+        <field name="name">purchase.request.line.form</field>
+        <field name="model">purchase.request.line</field>
+        <field name="arch" type="xml">
+            <form string="Purchase Request Line">
+                <sheet>
+                    <group>
+                        <field name="Request_id"/>
+                        <field name="Product_id"/>
+                        <field name="Uom_id"/>
+                        <field name="Qty"/>
+                        <field name="Qty_approve"/>
+                        <field name="Total" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_purchase_request_line_tree" model="ir.ui.view">
+        <field name="name">purchase.request.line.tree</field>
+        <field name="model">purchase.request.line</field>
+        <field name="arch" type="xml">
+            <tree string="Purchase Request Lines">
+                <field name="Request_id"/>
+                <field name="Product_id"/>
+                <field name="Uom_id"/>
+                <field name="Qty"/>
+                <field name="Qty_approve"/>
+                <field name="Total"/>
+            </tree>
+        </field>
+    </record>
+
+  </data>
+</odoo>
