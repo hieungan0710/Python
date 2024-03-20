@@ -4,8 +4,9 @@ class PurchaseRequestLine(models.Model):
     _name = 'purchase.request.line'
     _description = 'Chi tiết yêu cầu mua hàng'
 
-    request_id = fields.Many2one('purchase.request', string='Yêu cầu mua hàng')
+    request_id = fields.Many2one('purchase.request', string='STT')
     product_id = fields.Many2one('product.template', string='Sản phẩm')
+    description = fields.Text(string='Mô tả')
     uom_id = fields.Many2one('uom.uom', string='Đơn vị tính')
     qty = fields.Float(string='Số lượng')
     qty_approve = fields.Float(string='Số lượng đã phê duyệt')

@@ -5,33 +5,30 @@
             <field name="name">purchase.request.form</field>
             <field name="model">purchase.request</field>
             <field name="arch" type="xml">
-                <form string="Purchase_Request">
+                <form string="purchase_request">
                     <sheet>
-                        <group name="one">
+                        <div>
+                            <h2>Yêu Cầu Tham Chiếu</h2>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="request_id"/>
+                                <field name="approver_id"/>
+                                <field name="department_id"/>
+                            </group>
                             <group>
                                 <field name="date"/>
-                                <field name="date_approved"/>
-                            </group>
-                            <group>
-                                <field name="state"/>
-                                <field name="total_qty"/>
-                                <field name="total_amount"/>
+                                <field name="date_approve"/>
                             </group>
                         </group>
-
+                        <group>
+                            <field name="description"/>
+                            <field name="state"/>
+                        </group>
                         <notebook>
-                            <page name="general_information" string="General Information">
-                                <group>
-                                    <group>
-                                        <field name="department_id"/>
-                                        <field name="request_id"/>
-                                        <field name="approver_id"/>
-                                    </group>
-                                    <group>
-                                        <label for="description" colspan="6"/>
-                                        <field name="description" colspan="6" nolabel="3"/>
-                                    </group>
-                                </group>
+                            <page name="san_pham" string="Sản Phẩm">
+                                <field name="request_line_ids"/>
                             </page>
                         </notebook>
                     </sheet>
@@ -44,33 +41,26 @@
             <field name="model">purchase.request</field>
             <field name="arch" type="xml">
                 <tree string="purchase" default_order="create_date desc">
-                            <field name="department_id"/>
-                            <field name="request_id"/>
-                            <field name="approver_id"/>
-                            <field name="date"/>
-                            <field name="date_approved"/>
-                            <field name="description"/>
-                            <field name="state"/>
-                            <field name="total_qty"/>
-                            <field name="total_amount"/>
+                    <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="request_id"/>
+                    <field name="approver_id"/>
+                    <field name="date"/>
+                    <field name="date_approve"/>
+                    <field name="state"/>
+                    <field name="total_qty"/>
+                    <field name="total_amount"/>
                 </tree>
             </field>
         </record>
-
-         <record model="ir.actions.act_window" id="action_purchase_request_views">
-            <field name="name">Purchase request</field>
+        <record model="ir.actions.act_window" id="action_purchase_request_views">
+            <field name="name">Yêu Cầu Mua Hàng</field>
             <field name="res_model">purchase.request</field>
             <field name="view_mode">tree,form</field>
             <field name="view_ids" eval="[(5,0,0),
                 (0,0, {'view_mode':'tree', 'view_id': ref('purchase_request_tree_view')}),
                 (0,0, {'view_mode':'form', 'view_id': ref('purchase_request_form_view')})]"/>
         </record>
-
         <menuitem id="purchase_menu" name="Purchase Request"/>
-        <menuitem id="purchase_request_menu"
-                  name="Purchase Request"
-                  parent="purchase_menu"
-                  action="action_purchase_request_views"
-                  sequence="10"/>
     </data>
 </odoo>
